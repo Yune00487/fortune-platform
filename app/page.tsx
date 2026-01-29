@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Star, PlayCircle, Users, Calendar, CreditCard, ChevronRight, Menu, X, Wind, Sun, Heart, Sparkles, Smile, Feather, CheckCircle } from "lucide-react";
+import { ArrowRight, Star, Users, Menu, X, Sun, Heart, Sparkles, Feather, CheckCircle } from "lucide-react";
 
 // Color Palette Constants
 const COLORS = {
@@ -11,7 +11,7 @@ const COLORS = {
   secondary: "#F3EFE7", // Cream Beige
   accent: "#C9A96A", // Warm Gold
   background: "#FAFAF8", // Warm Grayish White
-  textMain: "#4A5D4E", // Darker Green-Grey for text
+  textMain: "#4A5D4E", // Darker Green-Grey
   textLight: "#8A9A8D", // Lighter Green-Grey
   white: "#FFFFFF",
 };
@@ -47,10 +47,12 @@ export default function Home() {
     <div className={`min-h-screen font-sans selection:bg-[#C9A96A] selection:text-white`} style={{ backgroundColor: COLORS.background, color: COLORS.textMain }}>
       
       {/* Sticky Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-[#FAFAF8]/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-[#FAFAF8]/95 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Sparkles size={24} color={COLORS.primary} />
+            <div className="w-8 h-8 bg-[#6F8F72] rounded-lg flex items-center justify-center text-white">
+              <Sparkles size={18} />
+            </div>
             <span className="text-xl font-serif font-bold tracking-wide" style={{ color: COLORS.primary }}>SoulSpace</span>
           </div>
           
@@ -58,7 +60,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium">
             <Link href="#services" className="hover:text-[#C9A96A] transition-colors">Readings</Link>
             <Link href="#courses" className="hover:text-[#C9A96A] transition-colors">Courses</Link>
-            <Link href="/dashboard" className="hover:text-[#C9A96A] transition-colors">Teacher Portal</Link>
+            <Link href="/dashboard" className="hover:text-[#C9A96A] transition-colors">Portal</Link>
             <Link href="/login" className="px-6 py-2 rounded-full text-white transition-transform hover:scale-105 shadow-md hover:shadow-lg" style={{ backgroundColor: COLORS.primary }}>
               Login
             </Link>
@@ -116,7 +118,10 @@ export default function Home() {
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="#services" className="px-10 py-5 rounded-full font-bold text-white shadow-lg transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-2" style={{ backgroundColor: COLORS.primary }}>
-                Begin Healing <ArrowRight size={18} />
+                Book a Reading <ArrowRight size={18} />
+              </Link>
+              <Link href="#courses" className="px-10 py-5 rounded-full font-bold bg-white border border-[#E8F0E9] hover:border-[#6F8F72] text-[#4A5D4E] transition-all flex items-center justify-center gap-2">
+                Browse Courses
               </Link>
             </motion.div>
           </motion.div>
@@ -183,7 +188,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif font-bold mb-4" style={{ color: COLORS.primary }}>Spiritual Readings</h2>
-            <p className="max-w-xl mx-auto opacity-70">Choose a session to clarify your path.</p>
+            <p className="max-w-xl mx-auto opacity-70">Private sessions to clarify your path.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -210,7 +215,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Booking Form (Retained as is, just ensured it's not the Auth form) */}
+      {/* Booking Form */}
       <section className="py-24 px-6 relative overflow-hidden">
          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#F3EFE7] rounded-full filter blur-3xl -z-10 opacity-50"></div>
          <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-16 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white">
@@ -218,11 +223,10 @@ export default function Home() {
               <h2 className="text-3xl font-serif font-bold mb-2" style={{ color: COLORS.primary }}>Book Your Session</h2>
               <p className="opacity-60">Secure your spot. Energy exchange is handled securely.</p>
             </div>
-            {/* ...Simple Booking Form ... */}
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                 <input type="text" placeholder="Your Name" className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF8] border-none focus:ring-2 focus:ring-[#6F8F72] transition-all" />
-                 <input type="email" placeholder="Email" className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF8] border-none focus:ring-2 focus:ring-[#6F8F72] transition-all" />
+                 <input type="text" placeholder="Your Name" className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF8] border-none focus:ring-2 focus:ring-[#6F8F72] transition-all outline-none" />
+                 <input type="email" placeholder="Email" className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF8] border-none focus:ring-2 focus:ring-[#6F8F72] transition-all outline-none" />
               </div>
               <button className="w-full py-5 rounded-2xl text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all" style={{ backgroundColor: COLORS.primary }}>
                 Proceed to Payment
@@ -287,12 +291,13 @@ export default function Home() {
               A safe space for you to heal, grow, and remember your magic.
             </p>
           </div>
-          {/* ... footer links ... */}
+          {/* ... links ... */}
           <div className="max-w-6xl mx-auto border-t border-white/10 mt-16 pt-8 text-center text-xs opacity-50">
              © 2026 SoulSpace Academy. All rights reserved.
           </div>
         </div>
       </footer>
+
     </div>
   );
 }
